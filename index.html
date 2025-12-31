@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amp Design</title>
+    <link rel="icon" type="image/svg+xml" href="/amp-favicon.svg">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body class="min-h-screen bg-gray-50">
     <!-- Header -->
-    <header class="container mx-auto px-4 py-16">
+    <header class="container mx-auto px-4 py-8">
       <nav class="flex items-center justify-between mb-8 relative">
         <div class="flex gap-6">
           <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
@@ -18,7 +19,7 @@
           <a href="#interview-process" class="text-gray-600 hover:text-gray-900">Interview Process</a>
         </div>
         <img src="/amplitude-logo.svg" alt="Amplitude" class="h-8 absolute left-1/2 -translate-x-1/2">
-        <a href="#open-roles" class="group relative bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5">3</span></a>
+        <a href="#open-roles" class="group relative bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 scale-90 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5 group-hover:scale-100">3</span></a>
       </nav>
       <!-- Logo placeholder -->
       <div class="h-[65vh] mt-[80px] flex items-center justify-center relative overflow-hidden">
@@ -61,7 +62,18 @@
                                                    ++++++
 
         </pre>
-        <h1 class="text-8xl font-normal text-gray-900 relative z-10 pointer-events-none">Design at Amplitude</h1>
+        <h1 class="text-8xl font-normal text-gray-900 relative z-10 pointer-events-none select-none">Design at Amplitude</h1>
+        <!-- ASCII Art Controls -->
+        <div id="ascii-controls" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full shadow-lg opacity-0 transition-opacity duration-200 pointer-events-none z-20">
+          <input type="range" id="brush-size" min="8" max="48" value="24" class="w-24 accent-gray-900 cursor-pointer">
+          <div class="flex gap-2">
+            <button data-color="#1E61F0" class="color-swatch w-5 h-5 rounded-full bg-[#1E61F0] ring-2 ring-offset-2 ring-[#1E61F0] cursor-pointer"></button>
+            <button data-color="#8B5CF6" class="color-swatch w-5 h-5 rounded-full bg-[#8B5CF6] ring-0 hover:ring-2 hover:ring-offset-2 hover:ring-[#8B5CF6] cursor-pointer transition-all"></button>
+            <button data-color="#10B981" class="color-swatch w-5 h-5 rounded-full bg-[#10B981] ring-0 hover:ring-2 hover:ring-offset-2 hover:ring-[#10B981] cursor-pointer transition-all"></button>
+            <button data-color="#F59E0B" class="color-swatch w-5 h-5 rounded-full bg-[#F59E0B] ring-0 hover:ring-2 hover:ring-offset-2 hover:ring-[#F59E0B] cursor-pointer transition-all"></button>
+            <button data-color="#EC4899" class="color-swatch w-5 h-5 rounded-full bg-[#EC4899] ring-0 hover:ring-2 hover:ring-offset-2 hover:ring-[#EC4899] cursor-pointer transition-all"></button>
+          </div>
+        </div>
       </div>
     </header>
 
