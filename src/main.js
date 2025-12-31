@@ -59,6 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const asciiArt = document.getElementById('ascii-art')
   if (!asciiArt) return
 
+  // Dynamic brush settings
+  let brushRadius = 24
+  let brushColor = '#1E61F0'
+
   const text = asciiArt.innerText
   let html = ''
 
@@ -77,14 +81,51 @@ document.addEventListener('DOMContentLoaded', () => {
   asciiArt.innerHTML = html
 
   const chars = asciiArt.querySelectorAll('.ascii-char')
-  const radius = 24 // pixels
+  const container = asciiArt.parentElement
+  const controls = document.getElementById('ascii-controls')
+  const brushSizeSlider = document.getElementById('brush-size')
+  const colorSwatches = document.querySelectorAll('.color-swatch')
 
   chars.forEach(span => {
     span.style.transition = 'color 2s ease-out'
   })
 
-  asciiArt.parentElement.addEventListener('mousemove', (e) => {
-    const rect = asciiArt.parentElement.getBoundingClientRect()
+  // Show/hide controls on container hover
+  container.addEventListener('mouseenter', () => {
+    controls.classList.remove('opacity-0', 'pointer-events-none')
+    controls.classList.add('opacity-100', 'pointer-events-auto')
+  })
+
+  container.addEventListener('mouseleave', () => {
+    controls.classList.remove('opacity-100', 'pointer-events-auto')
+    controls.classList.add('opacity-0', 'pointer-events-none')
+  })
+
+  // Brush size slider
+  brushSizeSlider.addEventListener('input', (e) => {
+    brushRadius = parseInt(e.target.value, 10)
+  })
+
+  // Color swatch selection
+  colorSwatches.forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      const color = swatch.dataset.color
+      brushColor = color
+
+      // Update swatch visual states
+      colorSwatches.forEach(s => {
+        s.classList.remove('ring-2', 'ring-offset-2')
+        s.classList.add('ring-0')
+        s.style.removeProperty('--tw-ring-color')
+      })
+      swatch.classList.remove('ring-0')
+      swatch.classList.add('ring-2', 'ring-offset-2')
+      swatch.style.setProperty('--tw-ring-color', color)
+    })
+  })
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect()
     const mouseX = e.clientX - rect.left
     const mouseY = e.clientY - rect.top
 
@@ -95,9 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const distance = Math.sqrt((mouseX - spanX) ** 2 + (mouseY - spanY) ** 2)
 
-      if (distance < radius) {
+      if (distance < brushRadius) {
         span.style.transition = 'color 0.1s ease-in'
-        span.style.color = '#1E61F0'
+        span.style.color = brushColor
         setTimeout(() => {
           span.style.transition = 'color 2s ease-out'
           span.style.color = ''
@@ -110,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sparkle = () => {
     const randomChar = chars[Math.floor(Math.random() * chars.length)]
     randomChar.style.transition = 'color 0.1s ease-in'
-    randomChar.style.color = '#1E61F0'
+    randomChar.style.color = brushColor
     setTimeout(() => {
       randomChar.style.transition = 'color 2s ease-out'
       randomChar.style.color = ''
