@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+::selection {
+  background-color: #1E61F0;
+  color: white;
+}
+
+/* Interview process hover effect */
+.interview-row {
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.interview-row:hover ~ .interview-row {
+  opacity: 0.3;
+  filter: blur(2px);
+}
