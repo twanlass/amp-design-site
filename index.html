@@ -4,13 +4,176 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amp Design</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body class="min-h-screen bg-gray-50">
-    <main class="container mx-auto px-4 py-16">
-      <h1 class="text-4xl font-bold text-gray-900">Welcome to Amp Design</h1>
-      <p class="mt-4 text-lg text-gray-600">Your site is ready to build.</p>
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-16">
+      <nav class="flex items-center justify-between mb-8 relative">
+        <div class="flex gap-6">
+          <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
+          <a href="#team" class="text-gray-600 hover:text-gray-900">Team</a>
+          <a href="#interview-process" class="text-gray-600 hover:text-gray-900">Interview Process</a>
+        </div>
+        <img src="/amplitude-logo.svg" alt="Amplitude" class="h-8 absolute left-1/2 -translate-x-1/2">
+        <a href="#open-roles" class="group relative bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5">3</span></a>
+      </nav>
+      <!-- Logo placeholder -->
+      <div class="h-[65vh] mt-[80px] flex items-center justify-center relative overflow-hidden">
+        <pre id="ascii-art" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-[20px] text-gray-200 text-xs leading-none select-none whitespace-pre scale-[1.44]" aria-hidden="true">
+
+                         ++++++++
+                        +++++++++++
+                      ++++++++++++++
+                     ++++++++++++++++
+                    ++++++++  ++++++++
+                   ++++++++    ++++++++
+                  ++++++++      ++++++++
+                 ++++++++        +++++++
+                 +++++++         ++++++++
+                +++++++           ++++++++
+                +++++++           ++++++++
+               +++++++             ++++++++
+              ++++++++              +++++++
+              +++++++               ++++++++
+              +++++++                ++++++++
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           +++++++                     ++++++++
+           +++++++                     ++++++++
+           ++++++                       ++++++++                +++
+          +++++++                       ++++++++               +++
+          ++++++                         ++++++++             ++++
+          +++++                           +++++++             ++++
+         ++++++                           ++++++++           ++++
+         +++++                             +++++++          +++++
+                                           ++++++++         ++++
+                                            ++++++++       +++++
+                                             ++++++++     +++++
+                                              +++++++++ ++++++
+                                              +++++++++++++++
+                                               +++++++++++++
+                                                 ++++++++++
+                                                   ++++++
+
+        </pre>
+        <h1 class="text-8xl font-normal text-gray-900 relative z-10 pointer-events-none">Design at Amplitude</h1>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+      <!-- About -->
+      <section id="about" class="py-16">
+        <h2 class="text-2xl font-normal text-gray-900">About</h2>
+        <p class="mt-4 text-gray-600 max-w-prose">Placeholder for about section - design at Amplitude.</p>
+      </section>
+
+      <!-- Open Roles -->
+      <section id="open-roles" class="py-16">
+        <h2 class="text-2xl font-normal text-gray-900">Open Roles</h2>
+        <div class="mt-4 grid grid-cols-1 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
+          <job-card
+            title="Senior Product Designer, Experiment"
+            subtitle="SF, NYC – Full-time"
+            url="https://job-boards.greenhouse.io/amplitude/jobs/8242435002"
+          ></job-card>
+          <job-card
+            title="Lead Product Designer, Analytics"
+            subtitle="SF, NYC – Full-time"
+            url="https://job-boards.greenhouse.io/amplitude/jobs/8061053002"
+          ></job-card>
+          <job-card
+            title="Senior Product Designer, Guides & Surveys"
+            subtitle="SF, NYC – Full-time"
+            url="#"
+          ></job-card>
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section id="team" class="py-16">
+        <h2 class="text-2xl font-normal text-gray-900">Team</h2>
+        <p class="mt-4 text-gray-600 max-w-prose">Meet the people behind the pixels.</p>
+        <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
+          <designer-card name="Akshay Murthy" title="Product Design" location="San Francisco, CA" photo="/team/akshay.png"></designer-card>
+          <designer-card name="Amy Lin" title="Product Design" location="Seattle, WA" photo="/team/amy.png"></designer-card>
+          <designer-card name="Anita Lillie" title="Product Design" location="San Francisco, CA" photo="/team/anita.png"></designer-card>
+          <designer-card name="Chethana Kandula" title="Product Design" location="San Francisco, CA" photo="/team/chey.png"></designer-card>
+          <designer-card name="Fayyaz Mukarram" title="Product Design" location="Los Angeles, CA" photo="/team/fayyaz.png"></designer-card>
+          <designer-card name="Jake McKibben" title="Product Design" location="San Francisco, CA" photo="/team/jake.png"></designer-card>
+          <designer-card name="Jeff Scattini" title="Docs" location="San Francisco, CA" photo="/team/jeff.png"></designer-card>
+          <designer-card name="Jingshu Zhao" title="Product Design" location="San Francisco, CA" photo="/team/jingshu.png"></designer-card>
+          <designer-card name="Jules Lee" title="Research" location="San Francisco, CA" photo="/team/jules.png"></designer-card>
+          <designer-card name="Mark Zegarelli" title="Docs" location="San Francisco, CA" photo="/team/mark.png"></designer-card>
+          <designer-card name="Meredith Fay" title="Product Design" location="San Francisco, CA" photo="/team/mer.png"></designer-card>
+          <designer-card name="Sarmishta Akkala" title="Product Design" location="Atlanta, GA" photo="/team/sarmy.png"></designer-card>
+          <designer-card name="Tyler Wanlass" title="Director" location="Bellingham, WA" photo="/team/tyler.png"></designer-card>
+          <designer-card name="Will Newton" title="Product Design" location="San Francisco, CA" photo="/team/will.png"></designer-card>
+          <div class="bg-gray-50"></div>
+        </div>
+      </section>
+
+      <!-- Interview Process -->
+      <section id="interview-process" class="py-16">
+        <h2 class="text-2xl font-normal text-gray-900">Interview Process</h2>
+        <p class="mt-4 text-gray-600 max-w-prose">We know interviewing for a new design role can be a lot. We want to make it transparent and as stress-free as possible. You'll have a chance to meet a diverse group of people from the team including PMs, Engineers, and Researchers. Here's what to expect:</p>
+        <div class="interview-grid mt-4 grid grid-cols-1 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">1</span>
+            <div class="p-6">
+              <h3 class="font-normal">Intro</h3>
+              <p class="text-sm text-gray-600">Quick intro chat with the hiring manager and time for questions.</p>
+            </div>
+          </div>
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">2</span>
+            <div class="p-6">
+              <h3 class="font-normal">Case Study</h3>
+              <p class="text-sm text-gray-600">Present one or two projects and discuss your work with the team.</p>
+            </div>
+          </div>
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">3</span>
+            <div class="p-6">
+              <h3 class="font-normal">Design and PM Jam</h3>
+              <p class="text-sm text-gray-600">Live collaborative design exercise with a Designer and PM.</p>
+            </div>
+          </div>
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">4</span>
+            <div class="p-6">
+              <h3 class="font-normal">Design Research Partnership</h3>
+              <p class="text-sm text-gray-600">Short chat about working with research.</p>
+            </div>
+          </div>
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">5</span>
+            <div class="p-6">
+              <h3 class="font-normal">Engineering Partnership</h3>
+              <p class="text-sm text-gray-600">Short chat about collaborating with engineers.</p>
+            </div>
+          </div>
+          <div class="interview-row bg-gray-50 flex items-center">
+            <span class="text-base text-gray-600 w-[88px] h-[88px] border-r border-[#EBEBEB] flex items-center justify-center shrink-0">6</span>
+            <div class="p-6">
+              <h3 class="font-normal">Outro</h3>
+              <p class="text-sm text-gray-600">Final questions and wrap up with the hiring manager.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-6 text-gray-600 max-w-prose">Finally, when we get to the offer stage we'll ask for 3 references. Ideally one is a past manager.</p>
+      </section>
     </main>
+
+    <footer class="container mx-auto px-4 py-8 flex justify-between text-sm text-gray-500">
+      <p>© 2025 Amplitude, Inc.</p>
+      <p>Built from scratch by the Design team with <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener noreferrer" class="hover:text-gray-700 underline">Claude Code</a></p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
