@@ -141,7 +141,12 @@
           <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team/sarmy.png" data-hover-card="/cards/sarmy.png"></designer-card>
           <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team/tyler.png" data-hover-card="/cards/tyler.png"></designer-card>
           <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team/will.png" data-hover-card="/cards/will.png"></designer-card>
-          <div class="bg-gray-50" data-hover-card="/cards/unknown.png" data-hover-achievement="yourNextRole:Your Next Role?"></div>
+          <div id="empty-team-slot" class="group bg-gray-50 aspect-square flex items-center justify-center" data-hover-card="/cards/unknown.png" data-hover-achievement="yourNextRole:Your Next Role?">
+            <label id="card-hover-toggle" class="relative inline-flex items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">
+              <input type="checkbox" class="sr-only peer">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1E61F0]"></div>
+            </label>
+          </div>
         </div>
       </section>
 

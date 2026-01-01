@@ -16,6 +16,11 @@
   color: white;
 }
 
+/* Designer card hover effect (easter egg) */
+.card-hover-enabled .designer-card-inner:hover {
+  background-color: white;
+}
+
 /* Interview process hover effect */
 .interview-row {
   transition: opacity 0.3s ease, filter 0.3s ease;
