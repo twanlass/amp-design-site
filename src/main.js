@@ -8,7 +8,7 @@ class DesignerCard extends HTMLElement {
     const photo = this.getAttribute('photo') || 'https://placehold.co/200x200/e2e8f0/64748b?text=Photo'
 
     this.innerHTML = `
-      <div class="text-left bg-gray-50 aspect-square flex flex-col justify-end hover:bg-white transition-colors">
+      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end transition-colors">
         <div class="px-8">
           <img
             src="${photo}"
@@ -103,6 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(floatingCard)
 
     element.addEventListener('mouseenter', () => {
+      // Only show hover cards if toggle is enabled
+      if (!document.body.classList.contains('card-hover-enabled')) {
+        return
+      }
+
       floatingCard.classList.remove('opacity-0', 'scale-[0.8]')
       floatingCard.classList.add('opacity-100', 'scale-100')
       floatingCard.style.rotate = `${randomRotation}deg`
@@ -391,4 +396,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setInterval(sparkle, 200)
+})
+
+// Card hover toggle easter egg
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('#card-hover-toggle input')
+  const toggleLabel = document.getElementById('card-hover-toggle')
+  if (!toggle) return
+
+  toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+      document.body.classList.add('card-hover-enabled')
+      toggleLabel.classList.remove('opacity-0', 'group-hover:opacity-100')
+      toggleLabel.classList.add('opacity-100')
+    } else {
+      document.body.classList.remove('card-hover-enabled')
+      toggleLabel.classList.remove('opacity-100')
+      toggleLabel.classList.add('opacity-0', 'group-hover:opacity-100')
+    }
+  })
 })
