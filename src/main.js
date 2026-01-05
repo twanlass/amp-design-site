@@ -8,18 +8,18 @@ class DesignerCard extends HTMLElement {
     const photo = this.getAttribute('photo') || 'https://placehold.co/200x200/e2e8f0/64748b?text=Photo'
 
     this.innerHTML = `
-      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end hover:bg-white transition-colors">
-        <div class="px-8">
+      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end gap-2 hover:bg-white transition-colors">
+        <div class="px-4 sm:px-8">
           <img
             src="${photo}"
             alt="${name}"
-            class="w-40 h-40 object-cover mix-blend-multiply"
+            class="w-24 h-24 sm:w-40 sm:h-40 object-cover mix-blend-multiply select-none"
           />
         </div>
-        <div class="px-8 pb-6">
-          <h3 class="font-normal text-gray-900">${firstName}</h3>
-          <p class="text-base text-gray-500">${title}</p>
-          <p class="text-base text-gray-500">${location}</p>
+        <div class="px-4 sm:px-8 pb-4 sm:pb-6">
+          <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${firstName}</h3>
+          <p class="text-sm sm:text-base text-gray-500">${title}</p>
+          <p class="text-sm sm:text-base text-gray-500">${location}</p>
         </div>
       </div>
     `
@@ -36,14 +36,14 @@ class JobCard extends HTMLElement {
     const url = this.getAttribute('url') || '#'
 
     this.innerHTML = `
-      <div class="group flex items-center justify-between bg-gray-50 p-6 hover:bg-white transition-colors">
+      <div class="group flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 p-4 sm:p-6 hover:bg-white transition-colors gap-3 sm:gap-0">
         <div>
-          <h3 class="font-normal text-gray-900">${title}</h3>
-          <p class="text-base text-gray-500">${subtitle}</p>
+          <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${title}</h3>
+          <p class="text-sm sm:text-base text-gray-500">${subtitle}</p>
         </div>
         <div class="flex items-center gap-2">
-          <button class="share-btn text-sm text-gray-500 border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-100 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">Share</button>
-          <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-100">Apply Now ↗</a>
+          <button class="share-btn text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity select-none" style="font-weight: 490">Share</button>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 select-none" style="font-weight: 490">Apply Now ↗</a>
         </div>
       </div>
     `
@@ -70,10 +70,10 @@ class AboutItem extends HTMLElement {
     const description = this.getAttribute('description') || 'Description'
 
     this.innerHTML = `
-      <div class="bg-gray-50 px-8 py-6 aspect-square hover:bg-white transition-colors">
+      <div class="bg-gray-50 px-4 sm:px-8 py-4 sm:py-6 md:aspect-square hover:bg-white transition-colors">
         <span class="text-sm text-gray-400">${number}</span>
-        <h3 class="mt-2 font-normal text-gray-900 text-xl">${title}</h3>
-        <p class="mt-1 text-base text-gray-500 leading-7">${description}</p>
+        <h3 class="mt-2 text-gray-900 text-sm sm:text-base" style="font-weight: 490">${title}</h3>
+        <p class="mt-1 text-sm sm:text-base text-gray-500 leading-6 sm:leading-7">${description}</p>
       </div>
     `
   }
@@ -200,15 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Track if controls have been shown (once shown, stay visible)
   let controlsRevealed = false
-  let controlsTimeout = null
 
   const showControls = () => {
-    if (!controlsRevealed && !controlsTimeout) {
-      controlsTimeout = setTimeout(() => {
-        controlsWrapper.classList.remove('opacity-0', 'pointer-events-none', 'scale-[0.8]', '-bottom-8')
-        controlsWrapper.classList.add('opacity-100', 'pointer-events-auto', 'scale-100', 'bottom-0')
-        controlsRevealed = true
-      }, 2000)
+    if (!controlsRevealed) {
+      controlsWrapper.classList.remove('opacity-0', 'pointer-events-none', 'scale-[0.8]', '-bottom-8')
+      controlsWrapper.classList.add('opacity-100', 'pointer-events-auto', 'scale-100', 'bottom-0')
+      controlsRevealed = true
     }
   }
 
@@ -262,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1s delay before showing toast
     setTimeout(() => {
       const toast = document.createElement('div')
-      toast.className = 'fixed left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -top-8'
+      toast.className = 'fixed left-6 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -bottom-8'
       toast.innerHTML = `
         <div class="text-left">
           <div class="text-xs text-gray-400">Achievement Unlocked</div>
@@ -275,15 +272,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animate in (double rAF to ensure initial state is painted first)
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          toast.classList.remove('opacity-0', 'scale-[0.8]', '-top-8')
-          toast.classList.add('opacity-100', 'scale-100', 'top-4')
+          toast.classList.remove('opacity-0', 'scale-[0.8]', '-bottom-8')
+          toast.classList.add('opacity-100', 'scale-100', 'bottom-6')
         })
       })
 
       // Animate out and remove after 5 seconds
       setTimeout(() => {
-        toast.classList.remove('opacity-100', 'scale-100', 'top-4')
-        toast.classList.add('opacity-0', 'scale-[0.8]', '-top-8')
+        toast.classList.remove('opacity-100', 'scale-100', 'bottom-6')
+        toast.classList.add('opacity-0', 'scale-[0.8]', '-bottom-8')
         setTimeout(() => toast.remove(), 300)
       }, 5000)
     }, 1000)
@@ -347,24 +344,18 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  container.addEventListener('mousemove', (e) => {
+  // Shared paint function for mouse and touch
+  const paintAtPosition = (clientX, clientY) => {
     const rect = container.getBoundingClientRect()
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-
-    // Update brush cursor position
-    brushCursor.style.left = `${mouseX}px`
-    brushCursor.style.top = `${mouseY}px`
-
-    // Show controls when user starts painting (once shown, stays visible)
-    showControls()
+    const posX = clientX - rect.left
+    const posY = clientY - rect.top
 
     chars.forEach(span => {
       const spanRect = span.getBoundingClientRect()
       const spanX = spanRect.left - rect.left + spanRect.width / 2
       const spanY = spanRect.top - rect.top + spanRect.height / 2
 
-      const distance = Math.sqrt((mouseX - spanX) ** 2 + (mouseY - spanY) ** 2)
+      const distance = Math.sqrt((posX - spanX) ** 2 + (posY - spanY) ** 2)
 
       if (distance < brushRadius) {
         const paintColor = rainbowMode ? rainbowColors[rainbowIndex] : brushColor
@@ -375,6 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
           span.style.color = ''
         }, 100)
 
+        // Show controls when user actually paints a character (once shown, stays visible)
+        showControls()
+
         // Rainbow achievement
         if (rainbowMode && !achievements.tasteTheRainbow) {
           achievements.tasteTheRainbow = true
@@ -382,6 +376,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     })
+  }
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect()
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+
+    // Update brush cursor position
+    brushCursor.style.left = `${mouseX}px`
+    brushCursor.style.top = `${mouseY}px`
+
+    paintAtPosition(e.clientX, e.clientY)
+  })
+
+  // Touch support for mobile painting
+  let isTouchPainting = false
+
+  container.addEventListener('touchstart', (e) => {
+    isTouchPainting = true
+    const touch = e.touches[0]
+    paintAtPosition(touch.clientX, touch.clientY)
+  }, { passive: true })
+
+  container.addEventListener('touchmove', (e) => {
+    if (!isTouchPainting) return
+    const touch = e.touches[0]
+    paintAtPosition(touch.clientX, touch.clientY)
+  }, { passive: true })
+
+  container.addEventListener('touchend', () => {
+    isTouchPainting = false
   })
 
   // Scroll to bottom achievement
