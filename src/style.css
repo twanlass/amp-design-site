@@ -39,3 +39,16 @@
 .nav-logo:hover {
   transform: rotateY(25deg) rotateX(35deg);
 }
+
+/* Button press effect */
+.btn-primary,
+.btn-secondary {
+  position: relative;
+  top: 0;
+  transition: top 0.15s ease-out;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  top: 2px;
+}

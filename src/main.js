@@ -42,8 +42,8 @@ class JobCard extends HTMLElement {
           <p class="text-sm sm:text-base text-gray-500">${subtitle}</p>
         </div>
         <div class="flex items-center gap-2">
-          <button class="share-btn text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity select-none" style="font-weight: 490">Share</button>
-          <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 select-none" style="font-weight: 490">Apply Now ↗</a>
+          <button class="btn-secondary share-btn text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity select-none" style="font-weight: 490">Share</button>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 select-none" style="font-weight: 490">Apply Now ↗</a>
         </div>
       </div>
     `
