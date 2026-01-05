@@ -9,16 +9,19 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body class="min-h-screen bg-gray-50">
+  <body class="min-h-screen bg-gray-50 subpixel-antialiased">
     <!-- Nav -->
     <nav class="sticky top-0 bg-gray-50 z-50 border-b border-[#EBEBEB]">
       <div class="container mx-auto px-4 py-4 flex items-center justify-between relative">
         <div class="flex gap-6">
-          <a href="#about" class="text-gray-500 hover:text-gray-900">About</a>
-          <a href="#team" class="text-gray-500 hover:text-gray-900">Team</a>
-          <a href="#interview-process" class="text-gray-500 hover:text-gray-900">Interview Process</a>
+          <a href="#about" class="text-gray-900 hover:text-gray-500 transition-colors">About</a>
+          <a href="#team" class="text-gray-900 hover:text-gray-500 transition-colors">Team</a>
+          <a href="#interview-process" class="text-gray-900 hover:text-gray-500 transition-colors">Interview Process</a>
         </div>
-        <img src="/amplitude-logo.svg" alt="Amplitude" class="h-8 absolute left-1/2 -translate-x-1/2">
+        <a href="https://amplitude.com" target="_blank" rel="noopener noreferrer" class="nav-logo absolute left-1/2 -translate-x-1/2 group transition-transform duration-300 ease-out">
+          <img src="/amplitude-logo.svg" alt="Amplitude" class="h-8">
+          <span class="absolute text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" style="top: -8px; right: -4px;">↗</span>
+        </a>
         <a href="#open-roles" class="group relative bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 scale-90 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5 group-hover:scale-100">3</span></a>
       </div>
     </nav>
@@ -91,10 +94,10 @@
       <section id="about" class="py-16">
         <div class="mt-4 grid grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <about-item number="01" title="About Amplitude" description="Amplitude is software that helps teams build better products by understanding what their customers and users are doing, where they're getting stuck, and what new features and improvements they want to see built."></about-item>
-          <about-item number="02" title="Northstar" description="Our audacious goal is to enable customers to build self-improving software products. Products that can sense what their customers are doing, decide on improvements, and act to make them a reality."></about-item>
+          <about-item number="02" title="Our Northstar" description="Our audacious goal is to enable customers to build self-improving software products. Products that can sense what their customers are doing, decide on improvements, and act to make them a reality."></about-item>
           <about-item number="03" title="The Work" description="Designers at Amplitude have a ton of ownership. You'll own design for a large part of the product, help shape product strategy, and sweat the details from idea to what's shipped to production."></about-item>
-          <about-item number="04" title="Challenges" description="Our product is technical by nature. We have to design for power users and novices alike. It requires strong systems thinking, a broad understanding of all our products."></about-item>
-          <about-item number="05" title="AI Forward" description="Our Design team is very AI forward. We use the latest tools like Cursor, Claude Code, V0, Figma Make and more to prototype and build new experiences. Designers regularly ship code to production."></about-item>
+          <about-item number="04" title="Design Challenge" description="Our product is technical by nature. We have to design for power users and novices alike. It requires strong systems thinking, a broad understanding of all our products."></about-item>
+          <about-item number="05" title="AI Forward" description="Our Design team is very AI forward. We use the latest tools like Cursor, Claude Code, V0, Figma Make and more to prototype and build new experiences and Designers regularly ship code to production."></about-item>
           <about-item number="06" title="Values" description="We have four key company values: humility (low ego), ownership (make it happen), growth mindset (be comfortable being uncomfortable), and customer centricity (always be talking to customers, focus on their outcomes)."></about-item>
         </div>
       </section>
@@ -125,23 +128,23 @@
       <!-- Team -->
       <section id="team" class="py-16">
         <h2 class="text-2xl font-normal text-gray-900">Team</h2>
-        <p class="mt-4 text-gray-500 max-w-prose">Meet the people behind the pixels.</p>
+        <p class="mt-4 text-gray-500 max-w-prose">Meet the humans behind the product.</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
-          <designer-card name="Akshay Murthy" title="Product Design – AI" location="San Francisco, CA" photo="/team/akshay.png" data-hover-card="/cards/akshay.png"></designer-card>
-          <designer-card name="Amy Lin" title="Product Design – Growth" location="Seattle, WA" photo="/team/amy.png" data-hover-card="/cards/amy.png"></designer-card>
-          <designer-card name="Anita Lillie" title="Product Design – Data" location="San Francisco, CA" photo="/team/anita.png" data-hover-card="/cards/anita.png"></designer-card>
-          <designer-card name="Chethana Kandula" title="Product Design – Growth" location="San Francisco, CA" photo="/team/chey.png" data-hover-card="/cards/chey.png"></designer-card>
-          <designer-card name="Fayyaz Mukarram" title="Product Design – Experiment" location="Los Angeles, CA" photo="/team/fayyaz.png" data-hover-card="/cards/fayyaz.png"></designer-card>
-          <designer-card name="Jake McKibben" title="Product Design – Design Systems" location="San Francisco, CA" photo="/team/jake.png" data-hover-card="/cards/jake.png"></designer-card>
-          <designer-card name="Jeff Scattini" title="Technical Writing" location="San Francisco, CA" photo="/team/jeff.png" data-hover-card="/cards/jeff.png"></designer-card>
-          <designer-card name="Jingshu Zhao" title="Product Design – Analytics" location="San Francisco, CA" photo="/team/jingshu.png" data-hover-card="/cards/jingshu.png"></designer-card>
-          <designer-card name="Jules Lee" title="Research" location="San Francisco, CA" photo="/team/jules.png" data-hover-card="/cards/jules.png"></designer-card>
-          <designer-card name="Mark Zegarelli" title="Technical Writing" location="San Francisco, CA" photo="/team/mark.png" data-hover-card="/cards/mark.png"></designer-card>
-          <designer-card name="Meredith Fay" title="Product Design – Audiences" location="San Francisco, CA" photo="/team/mer.png" data-hover-card="/cards/mer.png"></designer-card>
-          <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team/sarmy.png" data-hover-card="/cards/sarmy.png"></designer-card>
-          <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team/tyler.png" data-hover-card="/cards/tyler.png"></designer-card>
-          <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team/will.png" data-hover-card="/cards/will.png"></designer-card>
-          <div id="empty-team-slot" class="group bg-gray-50 aspect-square flex items-center justify-center" data-hover-card="/cards/unknown.png" data-hover-achievement="yourNextRole:Your Next Role?">
+          <designer-card name="Akshay Murthy" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/akshay.jpg" data-hover-card="/cards-optimized/akshay.jpg"></designer-card>
+          <designer-card name="Amy Lin" title="Product Design – Growth" location="Seattle, WA" photo="/team-optimized/amy.jpg" data-hover-card="/cards-optimized/amy.jpg"></designer-card>
+          <designer-card name="Anita Lillie" title="Product Design – Data" location="San Francisco, CA" photo="/team-optimized/anita.jpg" data-hover-card="/cards-optimized/anita.jpg"></designer-card>
+          <designer-card name="Chethana Kandula" title="Product Design – Growth" location="San Francisco, CA" photo="/team-optimized/chey.jpg" data-hover-card="/cards-optimized/chey.jpg"></designer-card>
+          <designer-card name="Fayyaz Mukarram" title="Product Design – Experiment" location="Los Angeles, CA" photo="/team-optimized/fayyaz.jpg" data-hover-card="/cards-optimized/fayyaz.jpg"></designer-card>
+          <designer-card name="Jake McKibben" title="Product Design – Design Systems" location="San Francisco, CA" photo="/team-optimized/jake.jpg" data-hover-card="/cards-optimized/jake.jpg"></designer-card>
+          <designer-card name="Jeff Scattini" title="Technical Writing" location="San Francisco, CA" photo="/team-optimized/jeff.jpg" data-hover-card="/cards-optimized/jeff.jpg"></designer-card>
+          <designer-card name="Jingshu Zhao" title="Product Design – Analytics" location="San Francisco, CA" photo="/team-optimized/jingshu.jpg" data-hover-card="/cards-optimized/jingshu.jpg"></designer-card>
+          <designer-card name="Jules Lee" title="Research" location="San Francisco, CA" photo="/team-optimized/jules.jpg" data-hover-card="/cards-optimized/jules.jpg"></designer-card>
+          <designer-card name="Mark Zegarelli" title="Technical Writing" location="San Francisco, CA" photo="/team-optimized/mark.jpg" data-hover-card="/cards-optimized/mark.jpg"></designer-card>
+          <designer-card name="Meredith Fay" title="Product Design – Audiences" location="San Francisco, CA" photo="/team-optimized/mer.jpg" data-hover-card="/cards-optimized/mer.jpg"></designer-card>
+          <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team-optimized/sarmy.jpg" data-hover-card="/cards-optimized/sarmy.jpg"></designer-card>
+          <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team-optimized/tyler.jpg" data-hover-card="/cards-optimized/tyler.jpg"></designer-card>
+          <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/will.jpg" data-hover-card="/cards-optimized/will.jpg"></designer-card>
+          <div id="empty-team-slot" class="group bg-gray-50 aspect-square flex items-center justify-center" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Your Next Role?">
             <label id="card-hover-toggle" class="relative inline-flex items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">
               <input type="checkbox" class="sr-only peer">
               <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1E61F0]"></div>
@@ -156,43 +159,43 @@
         <p class="mt-4 text-gray-500 max-w-prose leading-7">We know interviewing for a new design role can be a lot. We want to make it transparent and as stress-free as possible. You'll have a chance to meet a diverse group of people from the team including PMs, Engineers, and Researchers.</p>
         <p class="mt-4 text-gray-500">Here's what to expect:</p>
         <div class="interview-grid mt-4 grid grid-cols-1 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Intro</h3>
               <p class="text-sm text-gray-500">Quick intro chat with the hiring manager and time for questions.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Case Study</h3>
               <p class="text-sm text-gray-500">Present one or two projects and discuss your work with the team.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Design Jam</h3>
               <p class="text-sm text-gray-500">Live collaborative design exercise with another Designer and PM.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Research Partnership</h3>
               <p class="text-sm text-gray-500">Short chat about working with research.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Engineering Partnership</h3>
               <p class="text-sm text-gray-500">Short chat about collaborating with engineers.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Outro</h3>
               <p class="text-sm text-gray-500">Final questions and wrap up with the hiring manager.</p>
             </div>
           </div>
-          <div class="interview-row bg-gray-50">
+          <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-6">
               <h3 class="font-normal">Offer</h3>
               <p class="text-sm text-gray-500">We'll ask for 3 references. Ideally one is a past manager.</p>
