@@ -30,3 +30,12 @@
   opacity: 0.3;
   filter: blur(2px);
 }
+
+/* Nav logo hover effect */
+.nav-logo {
+  transform-origin: center center;
+}
+
+.nav-logo:hover {
+  transform: rotateY(25deg) rotateX(35deg);
+}

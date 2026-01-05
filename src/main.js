@@ -8,7 +8,7 @@ class DesignerCard extends HTMLElement {
     const photo = this.getAttribute('photo') || 'https://placehold.co/200x200/e2e8f0/64748b?text=Photo'
 
     this.innerHTML = `
-      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end transition-colors">
+      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end hover:bg-white transition-colors">
         <div class="px-8">
           <img
             src="${photo}"
@@ -18,8 +18,8 @@ class DesignerCard extends HTMLElement {
         </div>
         <div class="px-8 pb-6">
           <h3 class="font-normal text-gray-900">${firstName}</h3>
-          <p class="text-sm text-gray-500">${title}</p>
-          <p class="text-sm text-gray-500">${location}</p>
+          <p class="text-base text-gray-500">${title}</p>
+          <p class="text-base text-gray-500">${location}</p>
         </div>
       </div>
     `
@@ -70,7 +70,7 @@ class AboutItem extends HTMLElement {
     const description = this.getAttribute('description') || 'Description'
 
     this.innerHTML = `
-      <div class="bg-gray-50 px-8 py-6 aspect-square">
+      <div class="bg-gray-50 px-8 py-6 aspect-square hover:bg-white transition-colors">
         <span class="text-sm text-gray-400">${number}</span>
         <h3 class="mt-2 font-normal text-gray-900 text-xl">${title}</h3>
         <p class="mt-1 text-base text-gray-500 leading-7">${description}</p>
@@ -88,6 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Achievement tracking for hover cards
   const hoverAchievements = {}
+
+  // Track viewed cards for collection achievement
+  const viewedCards = new Set()
+  const totalCards = hoverCardElements.length
 
   hoverCardElements.forEach(element => {
     const imageSrc = element.dataset.hoverCard
@@ -111,6 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
       floatingCard.classList.remove('opacity-0', 'scale-[0.8]')
       floatingCard.classList.add('opacity-100', 'scale-100')
       floatingCard.style.rotate = `${randomRotation}deg`
+
+      // Track viewed cards for collection achievement
+      viewedCards.add(imageSrc)
+      if (viewedCards.size === totalCards) {
+        window.dispatchEvent(new CustomEvent('hoverAchievement', { detail: { key: 'collectionComplete', title: 'Collection Complete' } }))
+      }
 
       // Trigger achievement if set
       if (achievementData && !hoverAchievements[achievementData]) {
@@ -239,42 +249,44 @@ document.addEventListener('DOMContentLoaded', () => {
     hotkeyWizard: false,
     tasteTheRainbow: false,
     yourNextRole: false,
-    proFidgeter: false
+    noTldr: false,
+    collectionComplete: false
   }
   let achievementCount = 0
-  const totalAchievements = 4
-
-  // Track painting time for Pro Fidgeter achievement
-  let paintingStartTime = null
-  let totalPaintingTime = 0
+  const totalAchievements = 5
 
   const showAchievementToast = (title) => {
     achievementCount++
-    const toast = document.createElement('div')
-    toast.className = 'fixed left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -top-8'
-    toast.innerHTML = `
-      <div class="text-left">
-        <div class="text-xs text-gray-400">Achievement Unlocked</div>
-        <div class="text-sm font-medium">${title}</div>
-      </div>
-      <span class="w-6 h-6 rounded-full bg-white text-gray-900 text-xs font-medium flex items-center justify-center shrink-0">${achievementCount}/${totalAchievements}</span>
-    `
-    document.body.appendChild(toast)
+    const count = achievementCount // Capture count at trigger time
 
-    // Animate in (double rAF to ensure initial state is painted first)
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        toast.classList.remove('opacity-0', 'scale-[0.8]', '-top-8')
-        toast.classList.add('opacity-100', 'scale-100', 'top-4')
-      })
-    })
-
-    // Animate out and remove after 5 seconds
+    // 1s delay before showing toast
     setTimeout(() => {
-      toast.classList.remove('opacity-100', 'scale-100', 'top-4')
-      toast.classList.add('opacity-0', 'scale-[0.8]', '-top-8')
-      setTimeout(() => toast.remove(), 300)
-    }, 5000)
+      const toast = document.createElement('div')
+      toast.className = 'fixed left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -top-8'
+      toast.innerHTML = `
+        <div class="text-left">
+          <div class="text-xs text-gray-400">Achievement Unlocked</div>
+          <div class="text-sm font-medium">${title}</div>
+        </div>
+        <span class="w-6 h-6 rounded-full bg-white text-gray-900 text-xs font-medium flex items-center justify-center shrink-0">${count}/${totalAchievements}</span>
+      `
+      document.body.appendChild(toast)
+
+      // Animate in (double rAF to ensure initial state is painted first)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          toast.classList.remove('opacity-0', 'scale-[0.8]', '-top-8')
+          toast.classList.add('opacity-100', 'scale-100', 'top-4')
+        })
+      })
+
+      // Animate out and remove after 5 seconds
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'scale-100', 'top-4')
+        toast.classList.add('opacity-0', 'scale-[0.8]', '-top-8')
+        setTimeout(() => toast.remove(), 300)
+      }, 5000)
+    }, 1000)
   }
 
   // Listen for hover card achievements
@@ -368,19 +380,18 @@ document.addEventListener('DOMContentLoaded', () => {
           achievements.tasteTheRainbow = true
           showAchievementToast('Taste the Rainbow')
         }
-
-        // Track painting time for Pro Fidgeter
-        if (!paintingStartTime) {
-          paintingStartTime = Date.now()
-        } else if (!achievements.proFidgeter) {
-          const currentPaintTime = Date.now() - paintingStartTime
-          if (currentPaintTime >= 10000) {
-            achievements.proFidgeter = true
-            showAchievementToast('Pro Fidgeter')
-          }
-        }
       }
     })
+  })
+
+  // Scroll to bottom achievement
+  window.addEventListener('scroll', () => {
+    if (achievements.noTldr) return
+    const scrolledToBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50
+    if (scrolledToBottom) {
+      achievements.noTldr = true
+      showAchievementToast('No tl;dr for you')
+    }
   })
 
   // Sparkle effect - randomly highlight characters
