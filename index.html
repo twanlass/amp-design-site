@@ -9,28 +9,28 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body class="min-h-screen bg-gray-50 subpixel-antialiased">
+  <body class="min-h-screen bg-gray-50 antialiased">
     <!-- Nav -->
-    <nav class="sticky top-0 bg-gray-50 z-50 border-b border-[#EBEBEB]">
-      <div class="container mx-auto px-4 py-4 flex items-center justify-between relative">
-        <div class="flex gap-6">
-          <a href="#about" class="text-gray-900 hover:text-gray-500 transition-colors">About</a>
-          <a href="#team" class="text-gray-900 hover:text-gray-500 transition-colors">Team</a>
-          <a href="#interview-process" class="text-gray-900 hover:text-gray-500 transition-colors">Interview Process</a>
-        </div>
-        <a href="https://amplitude.com" target="_blank" rel="noopener noreferrer" class="nav-logo absolute left-1/2 -translate-x-1/2 group transition-transform duration-300 ease-out">
-          <img src="/amplitude-logo.svg" alt="Amplitude" class="h-8">
-          <span class="absolute text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" style="top: -8px; right: -4px;">↗</span>
+    <nav class="sm:sticky top-0 bg-gray-50 z-50 border-b border-[#EBEBEB]">
+      <div class="container mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+        <a href="https://amplitude.com" target="_blank" rel="noopener noreferrer" class="nav-logo group transition-transform duration-300 ease-out shrink-0 relative">
+          <img src="/amplitude-logo.svg" alt="Amplitude" class="h-6 sm:h-8 opacity-80 group-hover:opacity-50 transition-opacity select-none">
+          <span class="hidden sm:block absolute text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" style="top: -8px; right: -4px;">↗</span>
         </a>
-        <a href="#open-roles" class="group relative bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 scale-90 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5 group-hover:scale-100">3</span></a>
+        <div class="flex gap-3 sm:gap-6 text-base">
+          <a href="#about" class="text-gray-800 hover:text-gray-500 transition-colors select-none">About</a>
+          <a href="#team" class="text-gray-800 hover:text-gray-500 transition-colors select-none">Team</a>
+          <a href="#interview-process" class="text-gray-800 hover:text-gray-500 transition-colors select-none"><span class="sm:hidden">Interviews</span><span class="hidden sm:inline">Interview Process</span></a>
+        </div>
+        <a href="#open-roles" class="group relative bg-gray-900 text-white px-3 sm:px-4 py-1.5 sm:py-2 text-sm rounded-full hover:bg-gray-800 shrink-0 select-none" style="font-weight: 490">We're Hiring<span class="absolute -top-0.5 -right-1.5 bg-[#1E61F0] text-white text-xs font-medium w-5 h-5 flex items-center justify-center rounded-full border border-white opacity-0 scale-90 transition-all duration-200 group-hover:opacity-100 group-hover:-top-1.5 group-hover:scale-100">3</span></a>
       </div>
     </nav>
 
     <!-- Header -->
-    <header class="container mx-auto px-4 py-8">
+    <header class="container mx-auto max-w-6xl px-4 py-8">
       <!-- Fidget fun -->
-      <div class="h-[65vh] mt-[80px] flex items-center justify-center relative">
-        <pre id="ascii-art" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-300 text-xs leading-none select-none whitespace-pre scale-[1.6]" aria-hidden="true">
+      <div class="h-[50vh] md:h-[65vh] mt-[40px] md:mt-[80px] flex items-center justify-center relative">
+        <pre id="ascii-art" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-300 text-xs leading-none select-none whitespace-pre scale-[0.5] sm:scale-[0.8] md:scale-[1.2] lg:scale-[1.6]" aria-hidden="true">
 
                          ++++++++
                         +++++++++++
@@ -69,7 +69,7 @@
                                                    ++++++
 
         </pre>
-        <h1 class="text-8xl font-normal text-gray-900 relative z-10 pointer-events-none select-none">Design at Amplitude</h1>
+        <h1 class="text-4xl md:text-6xl lg:text-8xl font-normal text-gray-900 relative z-10 pointer-events-none select-none text-center">Design at Amplitude</h1>
         <!-- Custom Brush Cursor -->
         <div id="brush-cursor" class="pointer-events-none absolute rounded-full border-2 border-gray-400 opacity-0 transition-opacity duration-150 -translate-x-1/2 -translate-y-1/2" style="width: 48px; height: 48px;"></div>
         <!-- ASCII Art Controls -->
@@ -89,16 +89,16 @@
       </div>
     </header>
 
-    <main class="container mx-auto px-4">
+    <main class="container mx-auto max-w-6xl px-4">
       <!-- About -->
       <section id="about" class="py-16">
-        <div class="mt-4 grid grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <about-item number="01" title="About Amplitude" description="Amplitude is software that helps teams build better products by understanding what their customers and users are doing, where they're getting stuck, and what new features and improvements they want to see built."></about-item>
           <about-item number="02" title="Our Northstar" description="Our audacious goal is to enable customers to build self-improving software products. Products that can sense what their customers are doing, decide on improvements, and act to make them a reality."></about-item>
           <about-item number="03" title="The Work" description="Designers at Amplitude have a ton of ownership. You'll own design for a large part of the product, help shape product strategy, and sweat the details from idea to what's shipped to production."></about-item>
-          <about-item number="04" title="Design Challenge" description="Our product is technical by nature. We have to design for power users and novices alike. It requires strong systems thinking, a broad understanding of all our products."></about-item>
-          <about-item number="05" title="AI Forward" description="Our Design team is very AI forward. We use the latest tools like Cursor, Claude Code, V0, Figma Make and more to prototype and build new experiences and Designers regularly ship code to production."></about-item>
-          <about-item number="06" title="Values" description="We have four key company values: humility (low ego), ownership (make it happen), growth mindset (be comfortable being uncomfortable), and customer centricity (always be talking to customers, focus on their outcomes)."></about-item>
+          <about-item number="04" title="Design Challenge" description="Our product is technical by nature, but we design for power users and novices alike. It requires designers to have strong systems thinking paired with a broad understanding of all our product offerings."></about-item>
+          <about-item number="05" title="AI Forward" description="Our team is AI forward with Designers regularly shipping code to production. We use the latest tools like Cursor, Claude Code, V0, Figma Make and more to prototype and build new experiences."></about-item>
+          <about-item number="06" title="Values" description="Amplitude has four company values that shape design: humility (low ego), ownership (make it happen), growth mindset (be comfortable being uncomfortable), and customer centricity (talk to customers, focus on their needs)."></about-item>
         </div>
       </section>
 
@@ -128,7 +128,7 @@
       <!-- Team -->
       <section id="team" class="py-16">
         <h2 class="text-2xl font-normal text-gray-900">Team</h2>
-        <p class="mt-4 text-gray-500 max-w-prose">Meet the humans behind the product.</p>
+        <p class="mt-4 text-gray-500 max-w-prose">Meet the humans behind the product. Our Design team comes from diverse past areas like journalism, economics, engineering, game design, and more.</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <designer-card name="Akshay Murthy" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/akshay.jpg" data-hover-card="/cards-optimized/akshay.jpg"></designer-card>
           <designer-card name="Amy Lin" title="Product Design – Growth" location="Seattle, WA" photo="/team-optimized/amy.jpg" data-hover-card="/cards-optimized/amy.jpg"></designer-card>
@@ -144,7 +144,7 @@
           <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team-optimized/sarmy.jpg" data-hover-card="/cards-optimized/sarmy.jpg"></designer-card>
           <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team-optimized/tyler.jpg" data-hover-card="/cards-optimized/tyler.jpg"></designer-card>
           <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/will.jpg" data-hover-card="/cards-optimized/will.jpg"></designer-card>
-          <div id="empty-team-slot" class="group bg-gray-50 aspect-square flex items-center justify-center" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Your Next Role?">
+          <div id="empty-team-slot" class="hidden md:flex group bg-gray-50 aspect-square items-center justify-center" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Your Next Role?">
             <label id="card-hover-toggle" class="relative inline-flex items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">
               <input type="checkbox" class="sr-only peer">
               <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1E61F0]"></div>
@@ -160,44 +160,44 @@
         <p class="mt-4 text-gray-500">Here's what to expect:</p>
         <div class="interview-grid mt-4 grid grid-cols-1 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Intro</h3>
-              <p class="text-sm text-gray-500">Quick intro chat with the hiring manager and time for questions.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Intro</h3>
+              <p class="text-sm text-gray-500">A quick intro chat with the hiring manager and time for your questions.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Case Study</h3>
-              <p class="text-sm text-gray-500">Present one or two projects and discuss your work with the team.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Case Study</h3>
+              <p class="text-sm text-gray-500">We'll ask you to present one or two projects and discuss your work with the team.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Design Jam</h3>
-              <p class="text-sm text-gray-500">Live collaborative design exercise with another Designer and PM.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Design Jam</h3>
+              <p class="text-sm text-gray-500">A live collaborative design exercise with a Designer and PM from the team.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Research Partnership</h3>
-              <p class="text-sm text-gray-500">Short chat about working with research.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Research Partnership</h3>
+              <p class="text-sm text-gray-500">A short chat about working with Research at Amplitude.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Engineering Partnership</h3>
-              <p class="text-sm text-gray-500">Short chat about collaborating with engineers.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Engineering Partnership</h3>
+              <p class="text-sm text-gray-500">A short chat about collaborating with Engineering at Amplitude.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Outro</h3>
-              <p class="text-sm text-gray-500">Final questions and wrap up with the hiring manager.</p>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Outro</h3>
+              <p class="text-sm text-gray-500">A chance for final questions and wrap up with the hiring manager.</p>
             </div>
           </div>
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
-            <div class="p-6">
-              <h3 class="font-normal">Offer</h3>
+            <div class="p-4 sm:p-6">
+              <h3 style="font-weight: 490">Offer</h3>
               <p class="text-sm text-gray-500">We'll ask for 3 references. Ideally one is a past manager.</p>
             </div>
           </div>
@@ -205,7 +205,7 @@
       </section>
     </main>
 
-    <footer class="container mx-auto px-4 py-8 flex justify-between text-sm text-gray-500">
+    <footer class="container mx-auto max-w-6xl px-4 py-8 flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between text-sm text-gray-500">
       <p>© 2025 Amplitude, Inc.</p>
       <p>Built from scratch by the Design team with <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener noreferrer" class="hover:text-gray-700 underline">Claude Code</a></p>
     </footer>
