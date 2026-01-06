@@ -12,14 +12,14 @@ class DesignerCard extends HTMLElement {
         <div class="px-4 sm:px-8">
           <img
             src="${photo}"
-            alt="${name}"
+            alt="${name}, ${title}"
             class="w-24 h-24 sm:w-40 sm:h-40 object-cover mix-blend-multiply select-none"
           />
         </div>
         <div class="px-4 sm:px-8 pb-4 sm:pb-6">
           <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${firstName}</h3>
-          <p class="text-sm sm:text-base text-gray-500">${title}</p>
-          <p class="text-sm sm:text-base text-gray-500">${location}</p>
+          <p class="text-sm sm:text-base text-gray-600">${title}</p>
+          <p class="text-sm sm:text-base text-gray-600">${location}</p>
         </div>
       </div>
     `
@@ -39,7 +39,7 @@ class JobCard extends HTMLElement {
       <div class="group flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 p-4 sm:p-6 hover:bg-white transition-colors gap-3 sm:gap-0">
         <div>
           <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${title}</h3>
-          <p class="text-sm sm:text-base text-gray-500">${subtitle}</p>
+          <p class="text-sm sm:text-base text-gray-600">${subtitle}</p>
         </div>
         <div class="flex items-center gap-2">
           <button class="btn-secondary share-btn text-sm text-gray-900 border border-gray-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-gray-100 cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity select-none" style="font-weight: 490">Share</button>
@@ -71,9 +71,9 @@ class AboutItem extends HTMLElement {
 
     this.innerHTML = `
       <div class="bg-gray-50 px-4 sm:px-8 py-4 sm:py-6 md:aspect-square hover:bg-white transition-colors">
-        <span class="text-sm text-gray-400">${number}</span>
+        <span class="text-sm text-gray-500">${number}</span>
         <h3 class="mt-2 text-gray-900 text-sm sm:text-base" style="font-weight: 490">${title}</h3>
-        <p class="mt-1 text-sm sm:text-base text-gray-500 leading-6 sm:leading-7">${description}</p>
+        <p class="mt-1 text-sm sm:text-base text-gray-600 leading-6 sm:leading-7">${description}</p>
       </div>
     `
   }
@@ -100,8 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Random rotation between -8 and 8 degrees
     const randomRotation = Math.floor(Math.random() * 17) - 8
 
+    // Get name from designer-card for alt text
+    const designerCard = element.closest('designer-card')
+    const cardName = designerCard ? designerCard.getAttribute('name') : 'Team member'
+
     const floatingCard = document.createElement('img')
     floatingCard.src = imageSrc
+    floatingCard.alt = `${cardName} player card`
     floatingCard.className = 'fixed pointer-events-none z-50 w-64 opacity-0 scale-[0.8] transition-all duration-300 ease-out -translate-x-1/2 -translate-y-1/2 rounded-md shadow-xl'
     floatingCard.style.rotate = '0deg'
     document.body.appendChild(floatingCard)
@@ -262,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.className = 'fixed left-6 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -bottom-8'
       toast.innerHTML = `
         <div class="text-left">
-          <div class="text-xs text-gray-400">Achievement Unlocked</div>
+          <div class="text-xs text-gray-500">Achievement Unlocked</div>
           <div class="text-sm font-medium">${title}</div>
         </div>
         <span class="w-6 h-6 rounded-full bg-white text-gray-900 text-xs font-medium flex items-center justify-center shrink-0">${count}/${totalAchievements}</span>
