@@ -86,6 +86,9 @@ customElements.define('about-item', AboutItem)
 document.addEventListener('DOMContentLoaded', () => {
   const hoverCardElements = document.querySelectorAll('[data-hover-card]')
 
+  // Track currently hovered card for instant display when toggle is enabled
+  window.currentlyHoveredCard = null
+
   // Achievement tracking for hover cards
   const hoverAchievements = {}
 
@@ -111,12 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
     floatingCard.style.rotate = '0deg'
     document.body.appendChild(floatingCard)
 
-    element.addEventListener('mouseenter', () => {
-      // Only show hover cards if toggle is enabled
-      if (!document.body.classList.contains('card-hover-enabled')) {
-        return
-      }
-
+    // Function to show the card (reusable for instant toggle display)
+    const showCard = () => {
       floatingCard.classList.remove('opacity-0', 'scale-[0.8]')
       floatingCard.classList.add('opacity-100', 'scale-100')
       floatingCard.style.rotate = `${randomRotation}deg`
@@ -133,9 +132,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const [key, title] = achievementData.split(':')
         window.dispatchEvent(new CustomEvent('hoverAchievement', { detail: { key, title } }))
       }
+    }
+
+    element.addEventListener('mouseenter', () => {
+      // Track this as the currently hovered card
+      window.currentlyHoveredCard = { show: showCard, floatingCard }
+
+      // Only show hover cards if toggle is enabled
+      if (!document.body.classList.contains('card-hover-enabled')) {
+        return
+      }
+
+      showCard()
     })
 
     element.addEventListener('mouseleave', () => {
+      window.currentlyHoveredCard = null
       floatingCard.classList.remove('opacity-100', 'scale-100')
       floatingCard.classList.add('opacity-0', 'scale-[0.8]')
       floatingCard.style.rotate = '0deg'
@@ -450,6 +462,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('card-hover-enabled')
       toggleLabel.classList.remove('opacity-0', 'group-hover:opacity-100')
       toggleLabel.classList.add('opacity-100')
+      // Instantly show card if already hovering over one
+      if (window.currentlyHoveredCard) {
+        window.currentlyHoveredCard.show()
+      }
     } else {
       document.body.classList.remove('card-hover-enabled')
       toggleLabel.classList.remove('opacity-100')
