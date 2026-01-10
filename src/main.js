@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.className = 'fixed left-6 bg-gray-900 text-white px-4 py-3 rounded-lg z-50 flex items-center gap-3 transition-all duration-300 ease-out opacity-0 scale-[0.8] -bottom-8'
       toast.innerHTML = `
         <div class="text-left">
-          <div class="text-xs text-gray-500">Achievement Unlocked</div>
+          <div class="text-xs text-gray-300">Achievement Unlocked</div>
           <div class="text-sm font-medium">${title}</div>
         </div>
         <span class="w-6 h-6 rounded-full bg-white text-gray-900 text-xs font-medium flex items-center justify-center shrink-0">${count}/${totalAchievements}</span>
