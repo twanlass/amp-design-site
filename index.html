@@ -107,7 +107,7 @@
       <!-- Open Roles -->
       <section id="open-roles" class="py-16">
         <h2 class="text-2xl font-normal text-gray-900">Open Roles</h2>
-        <p class="mt-4 text-gray-600 max-w-prose leading-7">We have a <a href="https://maps.app.goo.gl/WxLeenGX2kWfBse1A" target="_blank" rel="noopener noreferrer" class="hover:text-gray-700 underline">lovely HQ in SF</a>, across from the Moscone Center, where most of our designers work from 2-3 days a week. For some roles we can consider exceptional candidates based in NYC (where we have an office as well) or remote US.</p>
+        <p class="mt-4 text-gray-600 max-w-prose leading-7">We have a lovely office <a href="https://maps.app.goo.gl/WxLeenGX2kWfBse1A" target="_blank" rel="noopener noreferrer" class="hover:text-gray-700 underline">located in downtown SF</a>, just across from the Moscone Convention Center, and down the block from the Museum of Modern Art. Typically, our team works from the office 2-3 days a week. Although we prefer our team to be colocated with us, we will consider for exceptional candidates in NYC or remote (US).</p>
         <div class="mt-4 grid grid-cols-1 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <job-card
             title="Product Designer, Experiment"
@@ -129,7 +129,13 @@
 
       <!-- Team -->
       <section id="team" class="py-16">
-        <h2 class="text-2xl font-normal text-gray-900">Team</h2>
+        <div class="group flex items-center gap-4">
+          <h2 class="text-2xl font-normal text-gray-900">Team</h2>
+          <label id="card-hover-toggle" class="relative inline-flex items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">
+            <input type="checkbox" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1E61F0]"></div>
+          </label>
+        </div>
         <p class="mt-4 text-gray-600 max-w-prose">Meet the humans behind the product. Our Design team comes from diverse past areas like journalism, economics, music, engineering, game design, and more.</p>
         <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-px bg-[#EBEBEB] border border-[#EBEBEB]">
           <designer-card name="Akshay Murthy" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/akshay.jpg" data-hover-card="/cards-optimized/akshay.jpg"></designer-card>
@@ -146,11 +152,18 @@
           <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team-optimized/sarmy.jpg" data-hover-card="/cards-optimized/sarmy.jpg"></designer-card>
           <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team-optimized/tyler.jpg" data-hover-card="/cards-optimized/tyler.jpg"></designer-card>
           <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/will.jpg" data-hover-card="/cards-optimized/will.jpg"></designer-card>
-          <div id="empty-team-slot" class="hidden md:flex group bg-gray-50 aspect-square items-center justify-center" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Your Next Role?">
-            <label id="card-hover-toggle" class="relative inline-flex items-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity">
-              <input type="checkbox" class="sr-only peer">
-              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#1E61F0]"></div>
-            </label>
+          <div id="unknown-team-slot" class="group flex text-left bg-gray-50 aspect-square flex-col justify-end gap-2 hover:bg-white transition-colors" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Unknown Spellcaster">
+            <div class="px-4 sm:px-8">
+              <div class="relative w-24 h-24 sm:w-40 sm:h-40">
+                <img src="/team-optimized/ben.jpg" alt="Your Next Role?" class="w-full h-full object-cover mix-blend-multiply select-none" />
+                <img src="/team/glasses.png" alt="" class="absolute left-[36px] top-[26%] w-[34px] sm:left-[54px] sm:w-[68px] group-hover:translate-y-[6px] transition-transform duration-300 pointer-events-none" />
+              </div>
+            </div>
+            <div class="px-4 sm:px-8 pb-4 sm:pb-6">
+              <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">You?</h3>
+              <p class="text-sm sm:text-base text-gray-600">Product Designer</p>
+              <p class="text-sm sm:text-base text-gray-600">SF / NYC</p>
+            </div>
           </div>
         </div>
       </section>
@@ -200,7 +213,7 @@
           <div class="interview-row bg-gray-50 hover:bg-white transition-colors">
             <div class="p-4 sm:p-6">
               <h3 style="font-weight: 490">Offer</h3>
-              <p class="text-sm text-gray-600">We'll ask for 3 references. Ideally one is a past manager.</p>
+              <p class="text-sm text-gray-600">Before the offer is made, we'll ask for 3 references. We prefer at least one of those references is a previous manager.</p>
             </div>
           </div>
         </div>
