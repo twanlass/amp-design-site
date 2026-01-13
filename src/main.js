@@ -17,9 +17,9 @@ class DesignerCard extends HTMLElement {
           />
         </div>
         <div class="px-4 sm:px-8 pb-4 sm:pb-6">
-          <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${firstName}</h3>
-          <p class="text-sm sm:text-base text-gray-600">${title}</p>
-          <p class="text-sm sm:text-base text-gray-600">${location}</p>
+          <h3 class="text-gray-900 text-xs sm:text-base" style="font-weight: 490">${firstName}</h3>
+          <p class="text-xs sm:text-base text-gray-600">${title}</p>
+          <p class="text-xs sm:text-base text-gray-600">${location}</p>
         </div>
       </div>
     `
