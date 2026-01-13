@@ -419,12 +419,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let isTouchPainting = false
 
   // Add touch-action CSS to prevent scroll gestures in the container
+  // But allow touch interactions on the controls
   container.style.touchAction = 'none'
+  controlsWrapper.style.touchAction = 'auto'
 
   container.addEventListener('touchstart', (e) => {
+    // Don't block touch on controls
+    if (controlsWrapper.contains(e.target)) return
+
     isTouchPainting = true
     e.preventDefault()
     const touch = e.touches[0]
+    const rect = container.getBoundingClientRect()
+    const touchX = touch.clientX - rect.left
+    const touchY = touch.clientY - rect.top
+
+    // Show and position brush cursor for touch (relative to container)
+    brushCursor.classList.remove('opacity-0')
+    brushCursor.classList.add('opacity-100')
+    brushCursor.style.left = `${touchX}px`
+    brushCursor.style.top = `${touchY}px`
+
     paintAtPosition(touch.clientX, touch.clientY)
   }, { passive: false })
 
@@ -432,11 +447,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isTouchPainting) return
     e.preventDefault()
     const touch = e.touches[0]
+    const rect = container.getBoundingClientRect()
+    const touchX = touch.clientX - rect.left
+    const touchY = touch.clientY - rect.top
+
+    // Update brush cursor position (relative to container)
+    brushCursor.style.left = `${touchX}px`
+    brushCursor.style.top = `${touchY}px`
+
     paintAtPosition(touch.clientX, touch.clientY)
   }, { passive: false })
 
   container.addEventListener('touchend', () => {
     isTouchPainting = false
+    // Hide brush cursor after touch ends
+    brushCursor.classList.remove('opacity-100')
+    brushCursor.classList.add('opacity-0')
   })
 
   // Scroll to bottom achievement
