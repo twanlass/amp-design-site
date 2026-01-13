@@ -415,17 +415,13 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Touch support for mobile painting
-  // Prevent scroll while painting by using passive: false and preventDefault()
+  // Only activate painting when tapping directly on ASCII characters
+  // Otherwise allow normal scrolling
   let isTouchPainting = false
 
-  // Add touch-action CSS to prevent scroll gestures in the container
-  // But allow touch interactions on the controls
-  container.style.touchAction = 'none'
-  controlsWrapper.style.touchAction = 'auto'
-
   container.addEventListener('touchstart', (e) => {
-    // Don't block touch on controls
-    if (controlsWrapper.contains(e.target)) return
+    // Only activate painting if tapping on an ASCII character
+    if (!e.target.classList.contains('ascii-char')) return
 
     isTouchPainting = true
     e.preventDefault()
