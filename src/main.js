@@ -415,19 +415,25 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Touch support for mobile painting
+  // Prevent scroll while painting by using passive: false and preventDefault()
   let isTouchPainting = false
+
+  // Add touch-action CSS to prevent scroll gestures in the container
+  container.style.touchAction = 'none'
 
   container.addEventListener('touchstart', (e) => {
     isTouchPainting = true
+    e.preventDefault()
     const touch = e.touches[0]
     paintAtPosition(touch.clientX, touch.clientY)
-  }, { passive: true })
+  }, { passive: false })
 
   container.addEventListener('touchmove', (e) => {
     if (!isTouchPainting) return
+    e.preventDefault()
     const touch = e.touches[0]
     paintAtPosition(touch.clientX, touch.clientY)
-  }, { passive: true })
+  }, { passive: false })
 
   container.addEventListener('touchend', () => {
     isTouchPainting = false
