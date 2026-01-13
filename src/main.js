@@ -7,8 +7,12 @@ class DesignerCard extends HTMLElement {
     const location = this.getAttribute('location') || 'Location'
     const photo = this.getAttribute('photo') || 'https://placehold.co/200x200/e2e8f0/64748b?text=Photo'
 
+    // Shorten "Product Design – X" to "Product Design" on mobile
+    const shortTitle = title.startsWith('Product Design –') ? 'Product Design' : title
+    const hasShortTitle = shortTitle !== title
+
     this.innerHTML = `
-      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end gap-2 hover:bg-white transition-colors">
+      <div class="designer-card-inner text-left bg-gray-50 flex flex-col justify-end gap-2 hover:bg-white transition-colors">
         <div class="px-4 sm:px-8">
           <img
             src="${photo}"
@@ -17,9 +21,12 @@ class DesignerCard extends HTMLElement {
           />
         </div>
         <div class="px-4 sm:px-8 pb-4 sm:pb-6">
-          <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">${firstName}</h3>
-          <p class="text-sm sm:text-base text-gray-600">${title}</p>
-          <p class="text-sm sm:text-base text-gray-600">${location}</p>
+          <h3 class="text-gray-900 text-xs sm:text-base" style="font-weight: 490">${firstName}</h3>
+          ${hasShortTitle
+            ? `<p class="text-xs sm:text-base text-gray-600"><span class="sm:hidden">${shortTitle}</span><span class="hidden sm:inline">${title}</span></p>`
+            : `<p class="text-xs sm:text-base text-gray-600">${title}</p>`
+          }
+          <p class="text-xs sm:text-base text-gray-600">${location}</p>
         </div>
       </div>
     `
