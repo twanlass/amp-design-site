@@ -8,7 +8,7 @@ class DesignerCard extends HTMLElement {
     const photo = this.getAttribute('photo') || 'https://placehold.co/200x200/e2e8f0/64748b?text=Photo'
 
     this.innerHTML = `
-      <div class="designer-card-inner text-left bg-gray-50 aspect-square flex flex-col justify-end gap-2 hover:bg-white transition-colors">
+      <div class="designer-card-inner text-left bg-gray-50 flex flex-col justify-end gap-2 hover:bg-white transition-colors">
         <div class="px-4 sm:px-8">
           <img
             src="${photo}"
