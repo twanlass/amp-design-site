@@ -415,22 +415,50 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Touch support for mobile painting
+  // Only activate painting when tapping directly on ASCII characters
+  // Otherwise allow normal scrolling
   let isTouchPainting = false
 
   container.addEventListener('touchstart', (e) => {
+    // Only activate painting if tapping on an ASCII character
+    if (!e.target.classList.contains('ascii-char')) return
+
     isTouchPainting = true
+    e.preventDefault()
     const touch = e.touches[0]
+    const rect = container.getBoundingClientRect()
+    const touchX = touch.clientX - rect.left
+    const touchY = touch.clientY - rect.top
+
+    // Show and position brush cursor for touch (relative to container)
+    brushCursor.classList.remove('opacity-0')
+    brushCursor.classList.add('opacity-100')
+    brushCursor.style.left = `${touchX}px`
+    brushCursor.style.top = `${touchY}px`
+
     paintAtPosition(touch.clientX, touch.clientY)
-  }, { passive: true })
+  }, { passive: false })
 
   container.addEventListener('touchmove', (e) => {
     if (!isTouchPainting) return
+    e.preventDefault()
     const touch = e.touches[0]
+    const rect = container.getBoundingClientRect()
+    const touchX = touch.clientX - rect.left
+    const touchY = touch.clientY - rect.top
+
+    // Update brush cursor position (relative to container)
+    brushCursor.style.left = `${touchX}px`
+    brushCursor.style.top = `${touchY}px`
+
     paintAtPosition(touch.clientX, touch.clientY)
-  }, { passive: true })
+  }, { passive: false })
 
   container.addEventListener('touchend', () => {
     isTouchPainting = false
+    // Hide brush cursor after touch ends
+    brushCursor.classList.remove('opacity-100')
+    brushCursor.classList.add('opacity-0')
   })
 
   // Scroll to bottom achievement
