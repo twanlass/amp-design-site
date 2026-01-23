@@ -28,10 +28,10 @@
     </nav>
 
     <!-- Header -->
-    <header class="container mx-auto max-w-6xl px-4 py-8">
+    <header class="container mx-auto max-w-6xl px-4 py-4 md:py-8">
       <!-- Fidget fun -->
-      <div class="h-[50vh] md:h-[65vh] mt-[40px] md:mt-[80px] flex items-center justify-center relative">
-        <pre id="ascii-art" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-300 text-xs leading-none select-none whitespace-pre scale-[0.5] sm:scale-[0.8] md:scale-[1.2] lg:scale-[1.6]" aria-hidden="true">
+      <div class="h-[35vh] md:h-[65vh] mt-[40px] md:mt-[80px] flex items-center justify-center relative">
+        <pre id="ascii-art" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-300 text-xs leading-none select-none whitespace-pre scale-[0.85] sm:scale-[0.8] md:scale-[1.2] lg:scale-[1.6]" aria-hidden="true">
 
                          ++++++++
                         +++++++++++
@@ -70,7 +70,7 @@
                                                    ++++++
 
         </pre>
-        <h1 class="text-4xl md:text-6xl lg:text-8xl font-normal text-gray-900 relative z-10 pointer-events-none select-none text-center">Design at Amplitude</h1>
+        <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-normal text-gray-900 relative z-10 pointer-events-none select-none text-center leading-[1.1]">Design at<br>Amplitude</h1>
         <!-- Custom Brush Cursor -->
         <div id="brush-cursor" class="pointer-events-none absolute rounded-full border-2 border-gray-400 opacity-0 transition-opacity duration-150 -translate-x-1/2 -translate-y-1/2" style="width: 48px; height: 48px;"></div>
         <!-- ASCII Art Controls -->
@@ -164,7 +164,7 @@
           <designer-card name="Sarmishta Akkala" title="Product Design – Analytics" location="Atlanta, GA" photo="/team-optimized/sarmy.jpg" data-hover-card="/cards-optimized/sarmy.jpg"></designer-card>
           <designer-card name="Tyler Wanlass" title="Director, Product Design" location="Bellingham, WA" photo="/team-optimized/tyler.jpg" data-hover-card="/cards-optimized/tyler.jpg"></designer-card>
           <designer-card name="Will Newton" title="Product Design – AI" location="San Francisco, CA" photo="/team-optimized/will.jpg" data-hover-card="/cards-optimized/will.jpg"></designer-card>
-          <div id="unknown-team-slot" class="group flex text-left bg-gray-50 aspect-square flex-col justify-end gap-2 hover:bg-white transition-colors" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Unknown Spellcaster">
+          <div id="unknown-team-slot" class="group flex text-left bg-gray-50 flex-col justify-end gap-2 hover:bg-white transition-colors" style="aspect-ratio: 1 / 1; overflow: hidden;" data-hover-card="/cards-optimized/unknown.jpg" data-hover-achievement="yourNextRole:Unknown Spellcaster">
             <div class="px-4 sm:px-8">
               <div class="relative w-24 h-24 sm:w-40 sm:h-40">
                 <img src="/team-optimized/ben.jpg" alt="Your Next Role?" class="w-full h-full object-cover mix-blend-multiply select-none" />
@@ -172,9 +172,9 @@
               </div>
             </div>
             <div class="px-4 sm:px-8 pb-4 sm:pb-6">
-              <h3 class="text-gray-900 text-sm sm:text-base" style="font-weight: 490">You?</h3>
-              <p class="text-sm sm:text-base text-gray-600">Product Designer</p>
-              <p class="text-sm sm:text-base text-gray-600">SF / NYC</p>
+              <h3 class="text-gray-900 text-xs sm:text-base" style="font-weight: 490">You?</h3>
+              <p class="text-xs sm:text-base text-gray-600">Product Designer</p>
+              <p class="text-xs sm:text-base text-gray-600">SF / NYC</p>
             </div>
           </div>
         </div>

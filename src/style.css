@@ -16,6 +16,17 @@
   color: white;
 }
 
+/* Designer card grid items - ensure equal height on mobile */
+designer-card {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+designer-card .designer-card-inner {
+  height: 100%;
+}
+
 /* Designer card hover effect (easter egg) */
 .card-hover-enabled .designer-card-inner:hover {
   background-color: white;
