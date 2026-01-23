@@ -81,6 +81,51 @@ class AboutItem extends HTMLElement {
 
 customElements.define('about-item', AboutItem)
 
+// Sticky about-item scale effect on scroll
+document.addEventListener('DOMContentLoaded', () => {
+  const aboutItems = document.querySelectorAll('#about about-item')
+
+  const getNavHeight = () => window.innerWidth >= 640 ? 57 : 0
+
+  const updateScaleEffect = () => {
+    const navHeight = getNavHeight()
+
+    aboutItems.forEach((item, index) => {
+      const innerDiv = item.querySelector(':scope > div')
+      const itemHeight = innerDiv.getBoundingClientRect().height
+
+      // Check if there's a next item approaching
+      if (index < aboutItems.length - 1) {
+        const nextItem = aboutItems[index + 1]
+        const nextRect = nextItem.getBoundingClientRect()
+        const nextTop = nextRect.top
+
+        // When next item's top is less than navHeight + current item height, we're being covered
+        const threshold = navHeight + itemHeight
+
+        if (nextTop < threshold) {
+          // Calculate progress: 0 when next item just touches, 1 when fully covering
+          const progress = Math.min((threshold - nextTop) / itemHeight, 1)
+          const scale = 1 - (progress * 0.1) // Scale down to 0.9 max
+          const blur = progress * 2 // Blur up to 2px
+          const opacity = 1 - progress // Fade to 0%
+          innerDiv.style.transform = `scale(${scale})`
+          innerDiv.style.filter = `blur(${blur}px)`
+          innerDiv.style.opacity = opacity
+          innerDiv.style.transformOrigin = 'center top'
+        } else {
+          innerDiv.style.transform = 'scale(1)'
+          innerDiv.style.filter = 'blur(0px)'
+          innerDiv.style.opacity = 1
+        }
+      }
+    })
+  }
+
+  window.addEventListener('scroll', updateScaleEffect, { passive: true })
+  window.addEventListener('resize', updateScaleEffect)
+})
+
 // Hover card effect - add data-hover-card="/path/to/image.png" to any element
 // Optionally add data-hover-achievement="achievementKey:Achievement Title" to trigger an easter egg
 document.addEventListener('DOMContentLoaded', () => {

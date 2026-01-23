@@ -62,3 +62,30 @@
 .animate-pulse-slow {
   animation: pulse-slow 1s ease-in-out infinite;
 }
+
+/* Sticky stacking cards effect for Intro section */
+#about about-item {
+  display: block;
+  position: sticky;
+  top: 0;
+  background: #f9fafb; /* bg-gray-50 to cover parent's gray */
+}
+
+@media (min-width: 640px) {
+  #about about-item {
+    top: 57px;
+  }
+}
+
+#about about-item > div {
+  border-top: 1px solid #EBEBEB;
+  transition: transform 0.1s ease-out, filter 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+/* Z-index via nth-child - later items stack on top */
+#about about-item:nth-child(1) { z-index: 1; }
+#about about-item:nth-child(2) { z-index: 2; }
+#about about-item:nth-child(3) { z-index: 3; }
+#about about-item:nth-child(4) { z-index: 4; }
+#about about-item:nth-child(5) { z-index: 5; }
+
