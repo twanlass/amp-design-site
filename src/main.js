@@ -70,7 +70,7 @@ class AboutItem extends HTMLElement {
     const description = this.getAttribute('description') || 'Description'
 
     this.innerHTML = `
-      <div class="bg-gray-50 px-4 sm:px-8 py-4 sm:py-6 md:aspect-square hover:bg-white transition-colors">
+      <div class="bg-gray-50 px-4 sm:px-8 py-4 sm:py-6 hover:bg-white transition-colors">
         <span class="text-sm text-gray-500">${number}</span>
         <h3 class="mt-2 text-gray-900 text-sm sm:text-base" style="font-weight: 490">${title}</h3>
         <p class="mt-1 text-sm sm:text-base text-gray-600 leading-6 sm:leading-7">${description}</p>
@@ -107,10 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const designerCard = element.closest('designer-card')
     const cardName = designerCard ? designerCard.getAttribute('name') : 'Team member'
 
+    const cardSize = element.dataset.hoverCardSize || 'w-64'
     const floatingCard = document.createElement('img')
     floatingCard.src = imageSrc
     floatingCard.alt = `${cardName} player card`
-    floatingCard.className = 'fixed pointer-events-none z-50 w-64 opacity-0 scale-[0.8] transition-all duration-300 ease-out -translate-x-1/2 -translate-y-1/2 rounded-md shadow-xl'
+    floatingCard.className = `fixed pointer-events-none z-50 ${cardSize} opacity-0 scale-[0.8] transition-all duration-300 ease-out -translate-x-1/2 -translate-y-1/2 rounded-md shadow-xl`
     floatingCard.style.rotate = '0deg'
     document.body.appendChild(floatingCard)
 
@@ -138,8 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Track this as the currently hovered card
       window.currentlyHoveredCard = { show: showCard, floatingCard }
 
-      // Only show hover cards if toggle is enabled
-      if (!document.body.classList.contains('card-hover-enabled')) {
+      // Always show if data-hover-card-always is set, otherwise require toggle
+      const alwaysShow = element.hasAttribute('data-hover-card-always')
+      if (!alwaysShow && !document.body.classList.contains('card-hover-enabled')) {
         return
       }
 
@@ -436,6 +438,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  // Video play achievement
+  const video = document.querySelector('video')
+  if (video) {
+    video.addEventListener('play', () => {
+      if (!achievements.waxOnWaxOff) {
+        achievements.waxOnWaxOff = true
+        showAchievementToast('Wax on, wax off')
+      }
+    })
+  }
+
   // Sparkle effect - randomly highlight characters
   const sparkle = () => {
     const randomChar = chars[Math.floor(Math.random() * chars.length)]
@@ -472,4 +485,42 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleLabel.classList.add('opacity-0', 'group-hover:opacity-100')
     }
   })
+})
+
+// Count-up animation
+document.addEventListener('DOMContentLoaded', () => {
+  const countElements = document.querySelectorAll('.count-up')
+
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.target, 10)
+    const duration = 1600 // 1.6s
+    const startTime = performance.now()
+
+    const update = (currentTime) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      // Ease out cubic for snappy feel
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const current = Math.round(eased * target)
+      el.textContent = current
+
+      if (progress < 1) {
+        requestAnimationFrame(update)
+      }
+    }
+
+    requestAnimationFrame(update)
+  }
+
+  // Use Intersection Observer to trigger when visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target)
+        observer.unobserve(entry.target)
+      }
+    })
+  }, { threshold: 0.15 })
+
+  countElements.forEach(el => observer.observe(el))
 })

@@ -52,3 +52,13 @@
 .btn-secondary:active {
   top: 2px;
 }
+
+/* Pulse animation for arrows */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 1s ease-in-out infinite;
+}
