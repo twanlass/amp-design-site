@@ -129,7 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  window.addEventListener('scroll', updateScaleEffect, { passive: true })
+  let ticking = false
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateScaleEffect()
+        ticking = false
+      })
+      ticking = true
+    }
+  }, { passive: true })
   window.addEventListener('resize', updateScaleEffect)
 })
 

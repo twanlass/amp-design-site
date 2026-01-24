@@ -94,7 +94,7 @@ designer-card .designer-card-inner {
 
 #about about-item > div {
   border-top: 1px solid #EBEBEB;
-  transition: transform 0.1s ease-out, filter 0.1s ease-out, opacity 0.1s ease-out;
+  will-change: transform, filter, opacity;
 }
 
 /* Z-index via nth-child - later items stack on top */
@@ -103,4 +103,13 @@ designer-card .designer-card-inner {
 #about about-item:nth-child(3) { z-index: 3; }
 #about about-item:nth-child(4) { z-index: 4; }
 #about about-item:nth-child(5) { z-index: 5; }
+
+/* Fill empty grid cell in team section on mobile */
+@media (max-width: 767px) {
+  #team > .grid::after {
+    content: '';
+    background: white;
+    aspect-ratio: 1 / 1;
+  }
+}
 
